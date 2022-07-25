@@ -1,0 +1,42 @@
+version: "3.7"
+
+services:
+  job-driver-nginx:
+    container_name: job-driver-nginx
+    image: nginx:1.17-alpine
+    volumes:
+      - ./src:/var/www/html:cached
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+    ports:
+      - "${DOCKER_NGINX}:80"
+    depends_on:
+      - job-driver-php
+    restart: unless-stopped
+
+  job-driver-php:
+    container_name: job-driver-php
+    build:
+      context: ./docker/php
+      dockerfile: php.local.dockerfile
+    restart: unless-stopped
+    volumes:
+      - ./src:/var/www/html:cached
+    depends_on:
+      - job-driver-postgres
+
+  job-driver-postgres:
+    container_name: job-driver-postgres
+    image: postgres:13.1-alpine
+    environment:
+      POSTGRES_USER: ${DOCKER_DATABASE_USER}
+      POSTGRES_PASSWORD: ${DOCKER_DATABASE_PASSWORD}
+      POSTGRES_DB: ${DOCKER_DATABASE_DB}
+    volumes:
+      - ../postgres-data:/var/lib/postgresql/data
+    ports:
+      - "${DOCKER_DATABASE_PORT}:5432"
+
+
+volumes:
+  composer:
+  ssh_dir: {}
