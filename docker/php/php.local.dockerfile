@@ -27,6 +27,10 @@ RUN set -xe \
     && apk add --update --no-cache freetype-dev libjpeg-turbo-dev libpng-dev \
     && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
     && docker-php-ext-install gd \
+    # redis \
+    && apk add --no-cache pcre-dev \
+    && pecl install redis \
+    && docker-php-ext-enable redis.so\
     # xdebug
     && pecl install xdebug-3.1.3 \
     && docker-php-ext-enable xdebug \

@@ -36,7 +36,17 @@ services:
     ports:
       - "${DOCKER_DATABASE_PORT}:5432"
 
+  job-driver-redis:
+    container_name: job-driver-redis
+    image: redis:latest
+    volumes:
+      - redis_data:/data
+    ports:
+      - "${DOCKER_REDIS_PORT}:6379"
+    restart: unless-stopped
+    command: redis-server --requirepass ${DOCKER_REDIS_PASSWORD}
 
 volumes:
   composer:
   ssh_dir: {}
+  redis_data:

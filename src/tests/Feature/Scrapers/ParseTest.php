@@ -4,15 +4,13 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Scrapers;
 
-use App\Scrapers\Scrape;
+use App\Parsers\Parse;
 use Tests\TestCase;
 
-class ScrapeTest extends TestCase
+class ParseTest extends TestCase
 {
     public function testCanRunScraping()
     {
-        $scrape = new Scrape;
-        $scrape();
-        $this->assertTrue(true);
+
     }
 }
