@@ -33,7 +33,29 @@ return [
                             'name' => 'link',
                             'multiple' => false,
                             'valuable' => true,
-                        ]
+                        ],
+                        [
+                            'css_selector' => 'span[data-qa=vacancy-serp__vacancy-compensation]',
+                            'type' => 'text',
+                            'name' => 'compensation',
+                            'multiple' => false,
+                            'valuable' => true,
+                        ],
+                        [
+                            'css_selector' => 'div.vacancy-serp-item__meta-info-company a',
+                            'type' => 'text',
+                            'name' => 'company',
+                            'multiple' => false,
+                            'valuable' => true,
+                        ],
+                        [
+                            'css_selector' => 'div[data-qa=vacancy-serp__vacancy_snippet_responsibility]',
+                            'type' => 'text',
+                            'name' => 'snippet_responsibility',
+                            'multiple' => false,
+                            'valuable' => true,
+                        ],
+
                     ]
 
                 ]

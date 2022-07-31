@@ -7,6 +7,7 @@ namespace App\Parsers\Parser;
 use App\Dto\Parsers\Parser\SpiderDto;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\DomCrawler\Crawler;
 
 class Spider
@@ -46,9 +47,15 @@ class Spider
         $scraper = new $classNameScraper;
         $params = array_merge([$body], array_values($property));
 
+        try {
+            $value = $scraper(...$params);
+        } catch (\Throwable $throwable) {
+            $value = null;
+            Log::error($throwable->getMessage(), $property);
+        }
         return [
             'name' => $property['name'],
-            'value' => $scraper(...$params)
+            'value' => $value
         ];
     }
 
