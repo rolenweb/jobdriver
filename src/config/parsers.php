@@ -58,6 +58,23 @@ return [
 
                     ]
 
+                ],
+                [
+                    'css_selector' => 'div.pager span[data-qa^=pager-page-wrapper]',
+                    'type' => 'html',
+                    'name' => 'pager',
+                    'multiple' => true,
+                    'valuable' => false,
+                    'items' => [
+                        [
+                            'css_selector' => 'a[data-qa=pager-page]',
+                            'uri' => 'https://hh.ru',
+                            'type' => 'link',
+                            'name' => 'link',
+                            'multiple' => false,
+                            'valuable' => true,
+                        ],
+                    ]
                 ]
             ]
         ],

@@ -60,12 +60,4 @@ class SpiderTest extends TestCase
 
         }
     }
-
-
-    private function fakeHttpResponseHH(): Response
-    {
-        return Http::fake([
-            'https://hh.ru/*' => Http::response(Storage::disk('tests_examples')->get('hh_list.html'), 200, [])
-        ])->get('https://hh.ru/search/vacancy?area=113&search_field=name&text=%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C&clusters=true&enable_snippets=true&ored_clusters=true&search_period=1&order_by=publication_time&hhtmFrom=vacancy_search_catalog');
-    }
 }

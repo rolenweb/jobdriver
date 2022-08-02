@@ -8,29 +8,54 @@ use App\Dto\Parsers\Parser\SpiderDto;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\DomCrawler\Crawler;
 
 class Spider
 {
-
-    public function handle(SpiderDto $spiderDto)
+    /**
+     * @param SpiderDto $spiderDto
+     * @return ParserResponse
+     */
+    public function handle(SpiderDto $spiderDto): ParserResponse
     {
         $pageResponse = $this->scrapePage($spiderDto->getUrl());
         $content = $this->scrapeContent($pageResponse->body(), $spiderDto->getProperties());
+
+        return new ParserResponse($pageResponse, $content);
     }
 
+    /**
+     * @param string $url
+     * @return Response
+     */
     private function scrapePage(string $url): Response
     {
-        return Http::get($url);
+        return Http::fake([
+            'https://test_hh_list.ru/*' => Http::response(Storage::disk('tests_examples')->get('hh_list.html'), 200, [])
+        ])->get($url);
     }
 
+    /**
+     * @param string $body
+     * @param array $properties
+     * @return array
+     */
     private function scrapeContent(string $body, array $properties)
     {
+        $content = [];
         foreach ($properties as $property) {
-
+            $content[$property['name']] = $this->scrapeProperty($body, $property);
         }
+
+        return $content;
     }
 
+    /**
+     * @param string $body
+     * @param array $property
+     * @return array
+     */
     private function scrapeProperty(string $body, array $property): array
     {
         if ($property['multiple']) {
