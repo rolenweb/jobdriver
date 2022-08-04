@@ -1,4 +1,4 @@
-FROM php:8.0-fpm-alpine3.13
+FROM php:8.1-fpm-alpine
 
 COPY ./etc/php-dev.ini /usr/local/etc/php/php.ini
 
