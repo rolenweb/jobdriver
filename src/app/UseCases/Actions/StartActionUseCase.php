@@ -13,6 +13,7 @@ use App\Repositories\ActionRepository;
 use App\UseCases\UseCaseInterface;
 use App\UseCases\UseCaseResponse;
 use Illuminate\Support\Facades\App;
+use Ramsey\Uuid\UuidInterface;
 
 class StartActionUseCase extends ActionUseCase implements UseCaseInterface
 {
@@ -40,13 +41,13 @@ class StartActionUseCase extends ActionUseCase implements UseCaseInterface
             'action' => $action
         ]);
 
-        $this->runHandler($action->handler, $action->status);
+        $this->runHandler($action->id, $action->handler, $action->status);
 
         return $response;
     }
 
-    private function runHandler(ActionHandlerEnum $handler, ActionStatusEnum $status): void
+    private function runHandler(UuidInterface $uuid, ActionHandlerEnum $handler, ActionStatusEnum $status): void
     {
-        App::make($this->findHandler($handler, $status))->handle($handler);
+        App::make($this->findHandler($handler, $status))->handle($uuid, $handler);
     }
 }

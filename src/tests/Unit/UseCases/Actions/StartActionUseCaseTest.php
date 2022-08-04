@@ -41,8 +41,8 @@ class StartActionUseCaseTest extends TestCase
                 ->andReturn($action);
         });
 
-        $this->mock(InProgressParsingWebHandler::class, function (MockInterface $mock) {
-            $mock->shouldReceive('handle')->with(ActionHandlerEnum::HeadHunterParser)->once();
+        $this->mock(InProgressParsingWebHandler::class, function (MockInterface $mock) use ($action) {
+            $mock->shouldReceive('handle')->with($action->id, ActionHandlerEnum::HeadHunterParser)->once();
         });
 
         /**
