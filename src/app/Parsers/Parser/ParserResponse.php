@@ -13,8 +13,8 @@ class ParserResponse
     private array $result;
 
     /**
-     * @param Response $response
-     * @param array $result
+     * @param  Response  $response
+     * @param  array  $result
      */
     public function __construct(Response $response, array $result)
     {

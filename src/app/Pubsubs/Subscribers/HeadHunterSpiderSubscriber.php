@@ -18,18 +18,18 @@ class HeadHunterSpiderSubscriber
     }
 
     /**
-     * @param string $url
-     * @param array $properties
+     * @param  string  $url
+     * @param  array  $properties
      * @return ParserResponse
      */
     private function scrape(string $url, array $properties): ParserResponse
     {
         $dto = new SpiderDto($url, $properties);
+
         return (new Spider())->handle($dto);
     }
 
     private function analyze(ParserResponse $parserResponse)
     {
-
     }
 }

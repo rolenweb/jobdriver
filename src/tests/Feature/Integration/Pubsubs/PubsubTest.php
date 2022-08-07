@@ -12,7 +12,7 @@ class PubsubTest extends TestCase
     public function testCanPublishToRedisChannel()
     {
         Redis::publish('hh_spider', json_encode([
-            'name' => 'Adam Wathan'
+            'name' => 'Adam Wathan',
         ]));
         $this->assertTrue(true);
     }

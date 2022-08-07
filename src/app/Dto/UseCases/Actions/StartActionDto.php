@@ -12,7 +12,7 @@ class StartActionDto implements Dto
     private UuidInterface $uuid;
 
     /**
-     * @param UuidInterface $uuid
+     * @param  UuidInterface  $uuid
      */
     public function __construct(UuidInterface $uuid)
     {

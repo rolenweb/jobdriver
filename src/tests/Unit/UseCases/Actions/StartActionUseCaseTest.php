@@ -9,7 +9,6 @@ use App\Enums\ActionHandlerEnum;
 use App\Enums\ActionStatusEnum;
 use App\Models\Actions\Action;
 use App\Repositories\ActionRepository;
-use App\UseCases\Actions\Handlers\ActionHandlerInterface;
 use App\UseCases\Actions\Handlers\InProgressParsingWebHandler;
 use App\UseCases\Actions\StartActionUseCase;
 use App\UseCases\UseCaseResponse;
@@ -28,7 +27,7 @@ class StartActionUseCaseTest extends TestCase
         $action->handler = ActionHandlerEnum::HeadHunterParser;
         $action->status = ActionStatusEnum::wating;
 
-        $this->mock(ActionRepository::class, function (MockInterface $mock) use ($action, $dto){
+        $this->mock(ActionRepository::class, function (MockInterface $mock) use ($action, $dto) {
             $mock
                 ->shouldReceive('findById')
                 ->with($dto->getUuid())

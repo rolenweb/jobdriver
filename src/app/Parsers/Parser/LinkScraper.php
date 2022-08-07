@@ -17,5 +17,4 @@ class LinkScraper
     {
         return (new Crawler($params[0], $params[2]))->filter($params[1])->link()->getUri();
     }
-
 }

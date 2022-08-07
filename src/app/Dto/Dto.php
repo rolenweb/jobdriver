@@ -6,5 +6,4 @@ namespace App\Dto;
 
 interface Dto
 {
-
 }

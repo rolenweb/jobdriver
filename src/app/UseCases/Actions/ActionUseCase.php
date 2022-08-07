@@ -12,9 +12,10 @@ use Psr\Container\NotFoundExceptionInterface;
 class ActionUseCase
 {
     /**
-     * @param ActionHandlerEnum $handler
-     * @param ActionStatusEnum $status
+     * @param  ActionHandlerEnum  $handler
+     * @param  ActionStatusEnum  $status
      * @return string
+     *
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */

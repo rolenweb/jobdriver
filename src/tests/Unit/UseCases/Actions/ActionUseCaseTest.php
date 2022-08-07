@@ -27,7 +27,7 @@ class ActionUseCaseTest extends TestCase
             'findHandler',
             [
                 ActionHandlerEnum::HeadHunterParser,
-                ActionStatusEnum::in_progress
+                ActionStatusEnum::in_progress,
             ]
         );
 
@@ -54,7 +54,7 @@ class ActionUseCaseTest extends TestCase
             'findHandler',
             [
                 ActionHandlerEnum::HeadHunterParser,
-                ActionStatusEnum::wating
+                ActionStatusEnum::wating,
             ]
         );
 
@@ -81,7 +81,7 @@ class ActionUseCaseTest extends TestCase
             'findHandler',
             [
                 ActionHandlerEnum::HeadHunterParser,
-                ActionStatusEnum::finished
+                ActionStatusEnum::finished,
             ]
         );
 
@@ -108,7 +108,7 @@ class ActionUseCaseTest extends TestCase
             'findHandler',
             [
                 ActionHandlerEnum::HeadHunterParser,
-                ActionStatusEnum::canceled
+                ActionStatusEnum::canceled,
             ]
         );
 

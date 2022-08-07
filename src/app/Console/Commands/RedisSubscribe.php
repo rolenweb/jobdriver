@@ -34,6 +34,5 @@ class RedisSubscribe extends Command
                 $subscriber($message);
             });
         }
-
     }
 }

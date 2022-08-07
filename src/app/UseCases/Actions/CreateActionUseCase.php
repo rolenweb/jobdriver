@@ -17,7 +17,7 @@ class CreateActionUseCase implements UseCaseInterface
     private ActionRepository $actionRepository;
 
     /**
-     * @param ActionRepository $actionRepository
+     * @param  ActionRepository  $actionRepository
      */
     public function __construct(ActionRepository $actionRepository)
     {
@@ -25,8 +25,9 @@ class CreateActionUseCase implements UseCaseInterface
     }
 
     /**
-     * @param CreateActionDto|Dto $dto
+     * @param  CreateActionDto|Dto  $dto
      * @return UseCaseResponse
+     *
      * @throws Throwable
      */
     public function handle(CreateActionDto|Dto $dto): UseCaseResponse
@@ -38,7 +39,7 @@ class CreateActionUseCase implements UseCaseInterface
         $action = $this->actionRepository->save($action);
 
         return new UseCaseResponse([
-            'action' => $action
+            'action' => $action,
         ]);
     }
 }

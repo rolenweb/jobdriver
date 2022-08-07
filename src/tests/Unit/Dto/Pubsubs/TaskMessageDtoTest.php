@@ -26,8 +26,8 @@ class TaskMessageDtoTest extends TestCase
                 'url' => 'http://test.ru',
                 'properties' => [
 
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -36,8 +36,6 @@ class TaskMessageDtoTest extends TestCase
         new TaskMessageDto($this->message);
         $this->assertTrue(true);
     }
-
-
 
     public function testThrowInvalidArgumentExceptionIfTaskIdIsNotUuid()
     {

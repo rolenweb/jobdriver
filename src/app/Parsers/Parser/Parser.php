@@ -7,5 +7,6 @@ namespace App\Parsers\Parser;
 class Parser
 {
     private Spider $spider;
+
     private Scraper $scraper;
 }

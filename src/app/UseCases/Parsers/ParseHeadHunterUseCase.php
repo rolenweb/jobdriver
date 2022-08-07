@@ -10,7 +10,6 @@ use App\UseCases\UseCaseResponse;
 
 class ParseHeadHunterUseCase implements UseCaseInterface
 {
-
     public function handle(Dto $dto): UseCaseResponse
     {
         // TODO: Implement handle() method.

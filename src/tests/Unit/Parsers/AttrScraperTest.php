@@ -13,6 +13,6 @@ class AttrScraperTest extends TestCase
     public function testCanScrapeAttrOfElementFromHtml()
     {
         $scraper = new AttrScraper;
-        $this->assertEquals('/vacancy/1?from=vacancy_search_list&hhtmFrom=vacancy_search_list', $scraper(Storage::disk('tests_examples')->get('simple.html'),'a.link', 'href'));
+        $this->assertEquals('/vacancy/1?from=vacancy_search_list&hhtmFrom=vacancy_search_list', $scraper(Storage::disk('tests_examples')->get('simple.html'), 'a.link', 'href'));
     }
 }

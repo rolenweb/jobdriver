@@ -11,11 +11,12 @@ trait InvokePrivateMethod
     /**
      * @param $object
      * @param $methodName
-     * @param array $parameters
+     * @param  array  $parameters
      * @return mixed
+     *
      * @throws \ReflectionException
      */
-    public function invokeMethod(&$object, $methodName, array $parameters = array())
+    public function invokeMethod(&$object, $methodName, array $parameters = [])
     {
         $reflection = new ReflectionClass(get_class($object));
         $method = $reflection->getMethod($methodName);

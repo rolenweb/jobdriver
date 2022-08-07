@@ -9,7 +9,6 @@ use Ramsey\Uuid\UuidInterface;
 
 class FinishParsingWebHandler implements ActionHandlerInterface
 {
-
     public function handle(UuidInterface $uuid, ActionHandlerEnum $handler): void
     {
         // TODO: Implement handle() method.

@@ -17,9 +17,9 @@ class CreateActionDto implements Dto
     private ActionStatusEnum $status;
 
     /**
-     * @param string $name
-     * @param ActionHandlerEnum $handler
-     * @param ActionStatusEnum $status
+     * @param  string  $name
+     * @param  ActionHandlerEnum  $handler
+     * @param  ActionStatusEnum  $status
      */
     public function __construct(string $name, ActionHandlerEnum $handler, ActionStatusEnum $status)
     {

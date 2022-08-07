@@ -11,7 +11,7 @@ class UseCaseResponse
     private Collection $data;
 
     /**
-     * @param array $data
+     * @param  array  $data
      */
     public function __construct(array $data)
     {

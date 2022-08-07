@@ -6,5 +6,4 @@ namespace App\Parsers\Parser;
 
 class Scraper
 {
-
 }

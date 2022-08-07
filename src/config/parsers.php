@@ -6,7 +6,7 @@ use App\Parsers\Parser\TextScraper;
 return [
     'scrapers' => [
         'text' => TextScraper::class,
-        'link' => LinkScraper::class
+        'link' => LinkScraper::class,
     ],
     'hh_ru' => [
         'spider' => [
@@ -56,7 +56,7 @@ return [
                             'valuable' => true,
                         ],
 
-                    ]
+                    ],
 
                 ],
                 [
@@ -74,12 +74,12 @@ return [
                             'multiple' => false,
                             'valuable' => true,
                         ],
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ],
         'scraper' => [
 
-        ]
-    ]
+        ],
+    ],
 ];

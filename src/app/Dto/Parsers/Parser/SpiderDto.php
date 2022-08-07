@@ -11,8 +11,8 @@ class SpiderDto
     private array $properties;
 
     /**
-     * @param string $url
-     * @param array $properties
+     * @param  string  $url
+     * @param  array  $properties
      */
     public function __construct(string $url, array $properties)
     {

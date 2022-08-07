@@ -11,10 +11,10 @@ use Throwable;
 
 class ActionRepository implements RepositoryInterface
 {
-
     /**
-     * @param Action|Model $model
+     * @param  Action|Model  $model
      * @return Action|Model
+     *
      * @throws Throwable
      */
     public function save(Action | Model $model): Action | Model
@@ -25,7 +25,7 @@ class ActionRepository implements RepositoryInterface
     }
 
     /**
-     * @param UuidInterface $uuid
+     * @param  UuidInterface  $uuid
      * @return Action
      */
     public function findById(UuidInterface $uuid): Action

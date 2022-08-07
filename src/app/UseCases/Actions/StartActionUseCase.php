@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\UseCases\Actions;
 
-
 use App\Dto\Dto;
 use App\Dto\UseCases\Actions\StartActionDto;
 use App\Enums\ActionHandlerEnum;
@@ -20,7 +19,7 @@ class StartActionUseCase extends ActionUseCase implements UseCaseInterface
     private ActionRepository $actionRepository;
 
     /**
-     * @param ActionRepository $actionRepository
+     * @param  ActionRepository  $actionRepository
      */
     public function __construct(ActionRepository $actionRepository)
     {
@@ -28,8 +27,9 @@ class StartActionUseCase extends ActionUseCase implements UseCaseInterface
     }
 
     /**
-     * @param StartActionDto|Dto $dto
+     * @param  StartActionDto|Dto  $dto
      * @return UseCaseResponse
+     *
      * @throws \Throwable
      */
     public function handle(StartActionDto|Dto $dto): UseCaseResponse
@@ -38,7 +38,7 @@ class StartActionUseCase extends ActionUseCase implements UseCaseInterface
         $action->status = ActionStatusEnum::in_progress;
         $action = $this->actionRepository->save($action);
         $response = new UseCaseResponse([
-            'action' => $action
+            'action' => $action,
         ]);
 
         $this->runHandler($action->id, $action->handler, $action->status);

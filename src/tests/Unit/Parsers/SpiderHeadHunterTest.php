@@ -81,7 +81,7 @@ class SpiderHeadHunterTest extends TestCase
         $spider = new Spider();
         $result = $this->invokeMethod($spider, 'scrapeProperty', [
             Storage::disk('tests_examples')->get('hh_list.html'),
-            config('parsers.hh_ru.spider.properties')[0]
+            config('parsers.hh_ru.spider.properties')[0],
         ]);
 
         foreach ($result as $index => $items) {
@@ -106,7 +106,7 @@ class SpiderHeadHunterTest extends TestCase
         $spider = new Spider();
         $result = $this->invokeMethod($spider, 'scrapeProperty', [
             Storage::disk('tests_examples')->get('hh_list.html'),
-            config('parsers.hh_ru.spider.properties')[1]
+            config('parsers.hh_ru.spider.properties')[1],
         ]);
 
         foreach ($result as $index => $items) {
@@ -122,7 +122,7 @@ class SpiderHeadHunterTest extends TestCase
         $spider = new Spider();
         $result = $this->invokeMethod($spider, 'scrapeContent', [
             Storage::disk('tests_examples')->get('hh_list.html'),
-            config('parsers.hh_ru.spider.properties')
+            config('parsers.hh_ru.spider.properties'),
         ]);
 
         $this->assertContains('card', array_keys($result));

@@ -4,11 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Parsers;
 
-use App\Dto\Parsers\Parser\SpiderDto;
 use App\Parsers\Parser\Spider;
-use App\Parsers\Parser\TextScraper;
-use Illuminate\Http\Client\Response;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 use Tests\Traits\InvokePrivateMethod;
@@ -43,10 +39,10 @@ class SpiderTest extends TestCase
                         'name' => 'link',
                         'multiple' => false,
                         'valuable' => true,
-                    ]
-                ]
+                    ],
+                ],
 
-            ]
+            ],
         ]);
 
         foreach ($result as $index => $items) {
@@ -57,7 +53,6 @@ class SpiderTest extends TestCase
             $this->assertEquals('Test title 1', $items[0]['value']);
             $this->assertEquals('link', $items[1]['name']);
             $this->assertEquals('http://test.domain/vacancy/1?from=vacancy_search_list&hhtmFrom=vacancy_search_list', $items[1]['value']);
-
         }
     }
 }

@@ -14,7 +14,7 @@ use Symfony\Component\DomCrawler\Crawler;
 class Spider
 {
     /**
-     * @param SpiderDto $spiderDto
+     * @param  SpiderDto  $spiderDto
      * @return ParserResponse
      */
     public function handle(SpiderDto $spiderDto): ParserResponse
@@ -26,19 +26,19 @@ class Spider
     }
 
     /**
-     * @param string $url
+     * @param  string  $url
      * @return Response
      */
     private function scrapePage(string $url): Response
     {
         return Http::fake([
-            'https://test_hh_list.ru/*' => Http::response(Storage::disk('tests_examples')->get('hh_list.html'), 200, [])
+            'https://test_hh_list.ru/*' => Http::response(Storage::disk('tests_examples')->get('hh_list.html'), 200, []),
         ])->get($url);
     }
 
     /**
-     * @param string $body
-     * @param array $properties
+     * @param  string  $body
+     * @param  array  $properties
      * @return array
      */
     private function scrapeContent(string $body, array $properties)
@@ -52,18 +52,19 @@ class Spider
     }
 
     /**
-     * @param string $body
-     * @param array $property
+     * @param  string  $body
+     * @param  array  $property
      * @return array
      */
     private function scrapeProperty(string $body, array $property): array
     {
         if ($property['multiple']) {
-            return (new Crawler($body))->filter($property['css_selector'])->each(function ($node) use ($property){
+            return (new Crawler($body))->filter($property['css_selector'])->each(function ($node) use ($property) {
                 $results = [];
                 foreach ($property['items'] as $item) {
                     $results[] = $this->scrapeProperty($node->html(), $item);
                 }
+
                 return $results;
             });
         }
@@ -78,14 +79,15 @@ class Spider
             $value = null;
             Log::error($throwable->getMessage(), $property);
         }
+
         return [
             'name' => $property['name'],
-            'value' => $value
+            'value' => $value,
         ];
     }
 
     /**
-     * @param string $type
+     * @param  string  $type
      * @return string
      */
     private function getClassNameScraper(string $type): string

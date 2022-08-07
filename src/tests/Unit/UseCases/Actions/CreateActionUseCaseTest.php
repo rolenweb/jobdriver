@@ -33,7 +33,7 @@ class CreateActionUseCaseTest extends TestCase
         $mockedAction->handler = $dto->getHandler();
         $mockedAction->status = $dto->getStatus();
 
-        $this->mock(ActionRepository::class, function (MockInterface $mock) use ($mockedAction){
+        $this->mock(ActionRepository::class, function (MockInterface $mock) use ($mockedAction) {
             $mock
                 ->shouldReceive('save')
                 ->once()

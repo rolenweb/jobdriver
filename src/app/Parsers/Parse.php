@@ -9,7 +9,6 @@ class Parse
     public function __invoke()
     {
         foreach (config('parsers') as $key => $item) {
-
         }
         throw new \Exception('test');
     }

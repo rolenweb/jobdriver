@@ -5,7 +5,6 @@ namespace App\Models\Actions;
 use App\Enums\ActionHandlerEnum;
 use App\Enums\ActionStatusEnum;
 use App\Models\Traits\UsesUuid;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -23,7 +22,7 @@ class Action extends Model
 
     protected $casts = [
         'handler' => ActionHandlerEnum::class,
-        'status' => ActionStatusEnum::class
+        'status' => ActionStatusEnum::class,
     ];
 
     public static function create(): self
